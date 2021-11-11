@@ -29,9 +29,9 @@ def run_process(argv, event):
         print(out)
 
 
-print("start")
+print("start " + str(len(processes)))
 s = time.time()
-pool = Pool(processes=2)
+pool = Pool(processes=24)
 m = Manager()
 event = m.Event()
 for proc in processes:
