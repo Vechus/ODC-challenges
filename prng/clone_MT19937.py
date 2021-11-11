@@ -47,6 +47,7 @@
 # https://github.com/james727/MTP
 
 from z3 import *
+import time
 
 # heavily based on https://github.com/james727/MTP
 # Usage:
@@ -149,6 +150,20 @@ def main():
     outputs of the real and the cloned PRNG. Then, we try to recover
     the seed.
     """
+    random_num = 0x75cd873 #input("Input random number: ")
+
+    for i in range(0xffffffff):
+        s = time.time()
+        rng = mersenne_rng(i)
+        for j in range(1000):
+            rng.get_random_number()
+        chosen = rng.get_random_number()
+        print(time.time() - s)
+        if chosen == random_num:
+            print("Found! Seed: ", i)
+
+    print("WTF NOT FOUND??")
+    '''
     rng = mersenne_rng(1337)
     print(f"real internal state of PRNG: {rng.state[0:10]} ...")
     random_nums = []
@@ -167,6 +182,7 @@ def main():
     for i in range(1000):
         assert(cloned_rng.get_random_number() == rng.get_random_number())
     print('Success!')
+    '''
 
 
 if __name__ == "__main__":
