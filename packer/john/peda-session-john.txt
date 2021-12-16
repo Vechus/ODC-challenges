@@ -1,3 +1,2 @@
-break *0x0804928a
-break *0x08049891
+break *0x0804928c
 
