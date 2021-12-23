@@ -1,0 +1,6 @@
+malloc arbitrary n bytes: get_string
+
+BUT frees the previous string if it is not the default one
+solution: alloc all 50 pkm at start, then rename them one by one and delete for freeing the chunks.
+
+
